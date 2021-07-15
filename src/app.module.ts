@@ -10,12 +10,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'database',
+      database: 'src/database/products.sqlite',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: join(process.cwd(), 'src/database/schema.gql'),
     }),
     ProductsModule,
   ],
