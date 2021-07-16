@@ -23,4 +23,12 @@ export class ProductsService {
   async findById(id: number): Promise<Product> {
     return this.productsRepository.findOne(id);
   }
+
+  async update(
+    id: number,
+    updateProductInput: UpdateProductInput,
+  ): Promise<Product> {
+    await this.productsRepository.findOneOrFail(id);
+    return this.productsRepository.save({ id, ...updateProductInput });
+  }
 }
