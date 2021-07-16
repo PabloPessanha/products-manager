@@ -41,4 +41,10 @@ export class ProductsService {
   async registeredProducts(): Promise<number> {
     return this.productsRepository.count();
   }
+
+  async smallerStock(): Promise<Product> {
+    const products = await this.productsRepository.find();
+
+    return products.sort((a, b) => a.stock - b.stock)[0];
+  }
 }

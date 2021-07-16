@@ -23,6 +23,11 @@ export class ProductsResolver {
     return this.productsService.registeredProducts();
   }
 
+  @Query((returns) => Product)
+  productWithSmallerStock(): Promise<Product> {
+    return this.productsService.smallerStock();
+  }
+
   @Mutation((returns) => Product)
   newProduct(
     @Args('createProductInput') createProductInput: CreateProductInput,
