@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProductInput } from 'src/dto/create-product.input';
 import { UpdateProductInput } from 'src/dto/update-product.input';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Product } from './product.entity';
 
 @Injectable()
@@ -36,5 +36,9 @@ export class ProductsService {
     const product = await this.productsRepository.findOneOrFail(id);
     await this.productsRepository.delete(id);
     return product;
+  }
+
+  async registeredProducts(): Promise<number> {
+    return this.productsRepository.count();
   }
 }

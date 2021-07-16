@@ -18,6 +18,11 @@ export class ProductsResolver {
     return this.productsService.findById(id);
   }
 
+  @Query((returns) => Int)
+  getRegisteredProducts(): Promise<number> {
+    return this.productsService.registeredProducts();
+  }
+
   @Mutation((returns) => Product)
   newProduct(
     @Args('createProductInput') createProductInput: CreateProductInput,
