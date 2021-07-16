@@ -53,4 +53,9 @@ export class ProductsService {
 
     return products.sort((a, b) => b.stock - a.stock)[0];
   }
+
+  async lowStock(): Promise<Product[]> {
+    const products = await this.productsRepository.find();
+    return products.filter((product) => product.stock < 5);
+  }
 }
