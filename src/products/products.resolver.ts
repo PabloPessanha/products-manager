@@ -32,4 +32,9 @@ export class ProductsResolver {
   ): Promise<Product> {
     return this.productsService.update(id, updateProductInput);
   }
+
+  @Mutation((returns) => Product)
+  deleteProduct(@Args('id') id: number): Promise<Product> {
+    return this.productsService.delete(id);
+  }
 }
