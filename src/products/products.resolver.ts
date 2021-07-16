@@ -28,6 +28,11 @@ export class ProductsResolver {
     return this.productsService.smallerStock();
   }
 
+  @Query((returns) => Product)
+  productWithBiggestStock(): Promise<Product> {
+    return this.productsService.biggestStock();
+  }
+
   @Mutation((returns) => Product)
   newProduct(
     @Args('createProductInput') createProductInput: CreateProductInput,

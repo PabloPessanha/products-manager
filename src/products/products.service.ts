@@ -47,4 +47,10 @@ export class ProductsService {
 
     return products.sort((a, b) => a.stock - b.stock)[0];
   }
+
+  async biggestStock(): Promise<Product> {
+    const products = await this.productsRepository.find();
+
+    return products.sort((a, b) => b.stock - a.stock)[0];
+  }
 }
