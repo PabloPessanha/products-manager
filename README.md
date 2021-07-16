@@ -26,36 +26,14 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Running the app (com docker)
 
 ```bash
-$ npm install
-```
+$ docker build -t products-graphql-tasken .
 
-## Running the app
+$ docker run -d -p 8345:3000 --name pablo-app products-graphql-tasken
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ localhost:8345/graphql
 ```
 
 ## Support
