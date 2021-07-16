@@ -24,4 +24,12 @@ export class ProductsResolver {
   ): Promise<Product> {
     return this.productsService.newProduct(createProductInput);
   }
+
+  @Mutation((returns) => Product)
+  updateProduct(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateProductInput') updateProductInput: UpdateProductInput,
+  ): Promise<Product> {
+    return this.productsService.update(id, updateProductInput);
+  }
 }
