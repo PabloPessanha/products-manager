@@ -1,51 +1,91 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Desafio backend | Tasken
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Proposta e organização
+O desafio consiste em criar um CRUD, para gerenciamento de produtos.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+O primeiro passo é criar uma tabela em um banco de dados relacional, optei por ultilizar SQLite para não haver necessidade de instalação de um banco de dados no sistema, a tabela possui as seguintes colunas:
 
-## Description
+- **id**: Gerado automáticamente ao inserir o produto;
+- **name**: Nome do produto, sendo a entrada obrigatória de tipo string;
+- **manufacture**: Fabricante do produto, sendo a entrada obrigatória de tipo string;
+- **stock**: Quantidade de estoque do produto em questão, sendo a entrada obrigatória do tipo inteiro;
+- **price**: Preço do produto em questão, sendo a entrada obrigatória do tipo float;
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Uma imagem ilustrativa para demonstrar como está organizada a tabela:
 
-## Running the app (com docker)
+<img src="./images/Tabela.png" alt="New Product Mutation" width="500px"/>
 
-```bash
-$ docker build -t products-graphql-tasken .
+OBS: a tabela é criada a partir do momento em que a aplicação é iniciada/feito a build.
 
-$ docker run -d -p 8345:3000 --name pablo-app products-graphql-tasken
+O segundo passo é, a partir da tabela criada, desenvolver um CRUD. foram ultilizados as seguintes ferramentas:
 
-$ localhost:8345/graphql
+- [x] Typescript;
+- [x] NestJS;
+- [x] TypeORM;
+- [x] GraphQL;
+
+#
+
+## Como posso testar aplicação?
+
+- Primeiro, clone o repositório aqui do git, utilizado o link fornecido no botão `code`;
+- Após clonado, entre na pasta raiz e siga os próximos passos:
+
+### **Iniciando a aplicação com node:**
+
+1. Execute o seguinte comando e aguarde terminar a instalação:
+
+```
+$ npm install
 ```
 
-## Support
+2. Após finalizado a instalação, execute este comando para criar a build:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```
+$ npm run build
+```
 
-## Stay in touch
+3. Após finalizado a build, execute este ultimo comando para ter acesso a aplicação:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```
+$ npm run start:prod
+```
 
-## License
+4. Agora, só acessar o seguinte link:
+```
+localhost:4444/graphql
+```
 
-Nest is [MIT licensed](LICENSE).
+### **Usando a aplicação com GraphQL:**
+
+Ao total, foram desenvolvidas 6 queries e 3 mutations, elas são:
+
+#### **Queries**
+
+- **products**: retorna todos os produtos já salvo no banco de dados;
+- **productsById**: retorna o produto que possui o id inserido;
+- **getRegisteredProducts**: retorna quantos produtos estão cadastrados no banco de dados;
+- **productWithSmallerStock**: retorna o produto com a menor quantidade de estoque;
+- **productWithBiggestStock**: retorna o produto com a maior quantidade de estoque;
+- **prooductsWithLowStock**: retorna os produtos que possuem uma quantidade de estoque menor que 5;
+
+#### **Mutations**
+
+- **newProduct**: retorna o produto que foi criado, precisando receber os seguites valores:
+  - **name**: valor de entrada obrigatória, sendo do tipo string;
+  - **manufacture**: valor de entrada obrigatória, sendo do tipo string;
+  - **price**: valor de entrada obrigatória, sendo do tipo int;
+  - **stock**: valor de entrada obrigatória, sendo do tipo float;
+  
+    <img src="./images/mut-new.png" alt="New Product Mutation" width="300px"/>
+
+- **updateProduct**: retorna o produto que foi alterado, precisando receber como primeiro parametro o id, e depois, os seguites valores:
+  - **name**: valor de entrada obrigatória, sendo do tipo string;
+  - **manufacture**: valor de entrada obrigatória, sendo do tipo string;
+  - **price**: valor de entrada obrigatória, sendo do tipo int;
+  - **stock**: valor de entrada obrigatória, sendo do tipo float;
+
+    <img src="./images/mut-update.png" alt="Update Product Mutation" width="300px"/>
+- **deleteProduct**: deleta o produto em questão a partir do id que foi passado no parametro;
+
+    <img src="./images/mut-del.png" alt="Update Product Mutation" width="300px"/>
