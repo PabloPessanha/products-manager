@@ -1,30 +1,31 @@
 # Desafio backend | Tasken
 
 ## Proposta e organização
-O desafio consiste em criar um CRUD, para gerenciamento de produtos.
+O desafio consiste em criar um CRUD, para gerenciamento de produtos em um banco de dados.
 
 O primeiro passo é criar uma tabela em um banco de dados relacional, optei por ultilizar SQLite para não haver necessidade de instalação de um banco de dados no sistema, a tabela possui as seguintes colunas:
 
-- **id**: Gerado automáticamente ao inserir o produto;
-- **name**: Nome do produto, sendo a entrada obrigatória de tipo string;
-- **manufacture**: Fabricante do produto, sendo a entrada obrigatória de tipo string;
-- **stock**: Quantidade de estoque do produto em questão, sendo a entrada obrigatória do tipo inteiro;
-- **price**: Preço do produto em questão, sendo a entrada obrigatória do tipo float;
+- **id**: gerado automáticamente ao inserir o produto;
+- **name**: nome do produto, sendo a entrada obrigatória de tipo string;
+- **manufacture**: fabricante do produto, sendo a entrada obrigatória de tipo string;
+- **stock**: quantidade de estoque do produto em questão, sendo a entrada obrigatória do tipo inteiro;
+- **price**: preço do produto em questão, sendo a entrada obrigatória do tipo float;
 
 Uma imagem ilustrativa para demonstrar como está organizada a tabela:
 
 <img src="./images/Tabela.png" alt="New Product Mutation" width="500px"/>
 
-OBS: a tabela é criada a partir do momento em que a aplicação é iniciada/feito a build.
+**OBS**: a tabela é criada a partir do momento em que a build é feita, logo, o banco de dados estará vazio no inicio da aplicação.
 
-O segundo passo é, a partir da tabela criada, desenvolver um CRUD. foram ultilizados as seguintes ferramentas:
+O segundo passo é, a partir da tabela criada, desenvolver um CRUD. 
+
+Foram ultilizados as seguintes ferramentas:
 
 - [x] Typescript;
 - [x] NestJS;
 - [x] TypeORM;
 - [x] GraphQL;
 
-#
 
 ## Como posso testar aplicação?
 
@@ -87,5 +88,6 @@ Ao total, foram desenvolvidas 6 queries e 3 mutations, elas são:
 
     <img src="./images/mut-update.png" alt="Update Product Mutation" width="300px"/>
 - **deleteProduct**: deleta o produto em questão a partir do id que foi passado no parametro;
-
+  - **id**: parametro obrigatório, sendo do tipo int;
+  
     <img src="./images/mut-del.png" alt="Update Product Mutation" width="300px"/>
