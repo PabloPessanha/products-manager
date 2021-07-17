@@ -1,8 +1,0 @@
-.git
-Dockerfile
-.DS_Store
-.gitignore
-README.md
-env.*
-/tests/*
-yarn.lock
