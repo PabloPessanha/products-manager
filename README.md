@@ -1,7 +1,6 @@
-# Desafio backend | Tasken
 
 ## Proposta e organização
-O desafio consiste em criar um CRUD, para gerenciamento de produtos em um banco de dados.
+A ideia é criar um CRUD para gerenciamento de produtos em um banco de dados, sendo usado como ferramenta principal, GraphQL para requisições.
 
 O primeiro passo é criar uma tabela em um banco de dados relacional, optei por ultilizar SQLite para não haver necessidade de instalação de um banco de dados no sistema, a tabela possui as seguintes colunas:
 
