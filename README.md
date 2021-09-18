@@ -11,9 +11,13 @@ O primeiro passo é criar uma tabela em um banco de dados relacional, optei por 
 - **stock**: quantidade de estoque do produto em questão, sendo a entrada obrigatória do tipo inteiro;
 - **price**: preço do produto em questão, sendo a entrada obrigatória do tipo float;
 
-Uma imagem ilustrativa para demonstrar como está organizada a tabela:
+Uma demonstração de como está organizada a tabela:
 
-<img src="./images/Tabela.png" alt="New Product Mutation" width="500px"/>
+| id(PK) |name         |manufacture  |stock  |price |
+|--------|-------------|-------------|-------|------|
+| 1      |Lapis        |Faber-castel |200    |1.50  |
+| 2      |Caneta Azul  |Bic          |50     |2.19  |
+| 3      |Borracha     |Faber-caster |30     |0.60  |
 
 **OBS**: a tabela é criada a partir do momento em que a build é feita, logo, o banco de dados estará vazio no inicio da aplicação.
 
@@ -70,6 +74,65 @@ Ao total, foram desenvolvidas 6 queries e 3 mutations, elas são:
 - **productWithBiggestStock**: retorna o produto com a maior quantidade de estoque;
 - **prooductsWithLowStock**: retorna os produtos que possuem uma quantidade de estoque menor que 5;
 
+**Exemplos de uso**
+
+*products*
+```graphql
+query {
+    products {
+        name
+        manufacturer
+        stock
+        price
+    }
+}
+```
+*productsById*
+```graphql
+query {
+    productById(id: 2) {
+        name
+        manufacturer
+        stock
+        price
+    }
+}
+```
+
+*getRegisteredProducts*
+```graphql
+query {
+    getRegisteredProducts
+}
+
+*productWithSmallerStock*
+query {
+    productWithSmallerStock {
+        name
+        price
+    }
+}
+```
+
+*productWithBiggestStock*
+```graphql
+query {
+    productWithBiggestStock {
+        name
+        manufacturer
+    }
+}
+```
+*productsWithLowStock*
+```graphql
+query {
+    productsWithLowStock {
+        name
+        stock
+    }
+}
+```
+
 #### **Mutations**
 
 - **newProduct**: retorna o produto que foi criado, precisando receber os seguites valores:
@@ -77,8 +140,6 @@ Ao total, foram desenvolvidas 6 queries e 3 mutations, elas são:
   - **manufacture**: valor de entrada obrigatória, sendo do tipo string;
   - **price**: valor de entrada obrigatória, sendo do tipo int;
   - **stock**: valor de entrada obrigatória, sendo do tipo float;
-  
-    <img src="./images/mut-new.png" alt="New Product Mutation" width="300px"/>
 
 - **updateProduct**: retorna o produto que foi alterado, precisando receber como primeiro parametro o id, e depois, os seguites valores:
   - **name**: valor de entrada obrigatória, sendo do tipo string;
@@ -86,8 +147,54 @@ Ao total, foram desenvolvidas 6 queries e 3 mutations, elas são:
   - **price**: valor de entrada obrigatória, sendo do tipo int;
   - **stock**: valor de entrada obrigatória, sendo do tipo float;
 
-    <img src="./images/mut-update.png" alt="Update Product Mutation" width="300px"/>
 - **deleteProduct**: deleta o produto em questão a partir do id que foi passado no parametro;
   - **id**: parametro obrigatório, sendo do tipo int;
-  
-    <img src="./images/mut-del.png" alt="Update Product Mutation" width="300px"/>
+
+**Exemplos de uso**
+
+*newProduct*
+```graphql
+mutation {
+    newProduct(createProductInput: {
+        name: "Laptop"
+        manufacturer: "Dell"
+        stock: 5000
+        price: 1449.99
+    }) {
+        name
+        manufacturer
+        stock
+        price
+    }
+}
+```
+
+*updateProduct*
+```graphql
+mutation {
+    updateProduct(id: 8, updateProductInput: {
+        name: "Laptop"
+        manufacturer: "Lenovo"
+        stock: 5000
+        price: 1300
+    }) {
+        name
+        manufacturer
+        stock
+        price
+    }
+}
+```
+
+*deleteProduct*
+
+```graphql
+mutation {
+    newProduct(id: 8) {
+        name
+        manufacturer
+        stock
+        price
+    }
+}
+```
