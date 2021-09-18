@@ -103,8 +103,10 @@ query {
 query {
     getRegisteredProducts
 }
+```
 
 *productWithSmallerStock*
+```graphql
 query {
     productWithSmallerStock {
         name
