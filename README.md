@@ -1,6 +1,6 @@
 
 ## Proposta e organização
-A ideia é criar um CRUD para gerenciamento de produtos em um banco de dados, sendo usado como ferramenta principal, GraphQL para requisições.
+A ideia é criar um CRUD para gerenciamento de produtos em um banco de dados, sendo usado como ferramenta principal, GraphQL para consulta/criação de dados.
 
 O primeiro passo é criar uma tabela em um banco de dados relacional, optei por ultilizar SQLite para não haver necessidade de instalação de um banco de dados no sistema, a tabela possui as seguintes colunas:
 
