@@ -19,8 +19,8 @@ export class ProductsResolver {
   }
 
   @Query((returns) => Int)
-  getRegisteredProducts(): Promise<number> {
-    return this.productsService.registeredProducts();
+  getRegisteredQuantity(): Promise<number> {
+    return this.productsService.registeredQuantity();
   }
 
   @Query((returns) => Product)
