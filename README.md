@@ -68,7 +68,7 @@ Ao total, foram desenvolvidas 6 queries e 3 mutations, elas são:
 
 - **products**: retorna todos os produtos já salvo no banco de dados;
 - **productsById**: retorna o produto que possui o id inserido;
-- **getRegisteredProducts**: retorna quantos produtos estão cadastrados no banco de dados;
+- **getRegisteredQuantity**: retorna quantos produtos estão cadastrados no banco de dados;
 - **productWithSmallerStock**: retorna o produto com a menor quantidade de estoque;
 - **productWithBiggestStock**: retorna o produto com a maior quantidade de estoque;
 - **prooductsWithLowStock**: retorna os produtos que possuem uma quantidade de estoque menor que 5;
@@ -98,10 +98,10 @@ query {
 }
 ```
 
-*getRegisteredProducts*
+*getRegisteredQuantity*
 ```graphql
 query {
-    getRegisteredProducts
+    getRegisteredQuantity
 }
 ```
 
