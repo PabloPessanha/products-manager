@@ -38,7 +38,7 @@ export class ProductsService {
     return product;
   }
 
-  async registeredProducts(): Promise<number> {
+  async registeredQuantity(): Promise<number> {
     return this.productsRepository.count();
   }
 
